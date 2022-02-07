@@ -1,0 +1,138 @@
+{
+  "Name": "0.0.0",
+  "CreationDate": "2022-2-8",
+  "Commands": [
+    {
+      "Command": "setWindowSize",
+      "Target": "1366x768",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "csvReadArray",
+      "Target": "agremo_adama_dev.csv",
+      "Value": "array1",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "${!csvReadMaxRow}",
+      "Value": "maxNumberOfLines",
+      "Description": ""
+    },
+    {
+      "Command": "while_v2",
+      "Target": "(${!csvReadLineNumber} <= ${maxNumberOfLines})",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${!csvReadLineNumber})-1",
+      "Value": "row_value",
+      "Description": ""
+    },
+    {
+      "Command": "csvReadArray",
+      "Target": "agremo_adama_dev.csv",
+      "Value": "array1",
+      "Description": ""
+    },
+    {
+      "Command": "open",
+      "Target": "${array1[${row_value}][0]}/home/logout",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "open",
+      "Target": "${array1[${row_value}][0]}/home/register",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "storeText",
+      "Target": "//a[contains(@class,'main-site clr-white bdr-white-bottom-x1 d-inline-block')]",
+      "Value": "link_text",
+      "Description": ""
+    },
+    {
+      "Command": "click",
+      "Target": "//a[contains(@class,'main-site clr-white bdr-white-bottom-x1 d-inline-block')]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "echo",
+      "Target": "${link_text}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "selectWindow",
+      "Target": "tab=1",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "if_v2",
+      "Target": "${link_text} == \"agremo.com\"",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "//h1[contains(text(),'The most powerful field analytics software')]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "else",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "comment",
+      "Target": "selectWindow // tab=${!csvReadLineNumber}",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "store",
+      "Target": "5",
+      "Value": "!TIMEOUT_WAIT",
+      "Description": ""
+    },
+    {
+      "Command": "waitForElementVisible",
+      "Target": "//p[@class='footer-copyright']/child::span[contains(text(),'ADAMA')]",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "end",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "selectWindow",
+      "Target": "tab=close",
+      "Value": "",
+      "Description": ""
+    },
+    {
+      "Command": "executeScript_Sandbox",
+      "Target": "return Number(${!csvReadLineNumber})+1",
+      "Value": "!csvReadLineNumber",
+      "Description": ""
+    },
+    {
+      "Command": "endWhile",
+      "Target": "",
+      "Value": "",
+      "Description": ""
+    }
+  ]
+}
